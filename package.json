@@ -1,5 +1,5 @@
 {
-  "name": "my-lib",
+  "name": "get-installed-browsers",
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.cjs",
