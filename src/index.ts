@@ -90,15 +90,15 @@ export async function GetInstalledBrowsers() {
 const emptyPlatform = {
   aix: [],
   android: [],
-  darwin: [],
   cygwin: [],
+  darwin: [],
   freebsd: [],
+  haiku: [],
   linux: [],
+  netbsd: [],
   openbsd: [],
   sunos: [],
   win32: [],
-  haiku: [],
-  netbsd: [],
 };
 
 export const Browsers: BrowserPaths[] = [
@@ -148,6 +148,16 @@ export const Browsers: BrowserPaths[] = [
       win32: getWinPaths("Google\\Chrome Canary\\Application\\chrome.exe"),
       darwin: getDarwinPaths("Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"),
       linux: ["google-chrome-canary"],
+    },
+  },
+  {
+    name: "Microsoft Edge",
+    type: "chrome",
+    path: {
+      ...emptyPlatform,
+      win32: getWinPaths("Microsoft\\Edge\\Application\\msedge.exe"),
+      darwin: getDarwinPaths("Microsoft Edge.app/Contents/MacOS/Microsoft Edge"),
+      linux: ["microsoft-edge"],
     },
   },
   {
