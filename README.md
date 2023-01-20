@@ -45,6 +45,7 @@ Supported browsers:
 - Firefox Nightly
 - Firefox Developer Edition
 - Internet Explorer
+- Microsoft Edge
 - Opera
 - Orion
 - Safari
