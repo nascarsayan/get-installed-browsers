@@ -48,6 +48,7 @@ Supported browsers:
 - Opera
 - Orion
 - Safari
+- Safari beta
 - Safari Technical Preview
 - Sidekick
 
