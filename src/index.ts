@@ -1,7 +1,9 @@
 import { homedir } from "os";
 import { resolve } from "path";
 import { existsSync } from "fs";
+import { promisify } from "util";
 import { exec } from "child_process";
+const execp = promisify(exec);
 
 const getWinPaths = (subdir: string) => {
   const sysDrive = process.env["SystemDrive"] || "C:";
@@ -39,22 +41,23 @@ interface Browser {
   path: Record<NodeJS.Platform, string[]>;
 }
 
-function exists(path: string): boolean {
+async function exists(path: string): Promise<boolean> {
   const platform = process.platform;
 
   if (platform === "linux") {
-    let err: Error | null = null;
-    exec("which " + path, (error) => {
-      err = error;
-    });
-
-    return err === null;
+    let exists = true;
+    try {
+      await execp("which " + path);
+    } catch (e) {
+      exists = false;
+    }
+    return exists;
   }
 
   return existsSync(path);
 }
 
-export function GetInstalledBrowsers() {
+export async function GetInstalledBrowsers() {
   const platform = process.platform;
   const installedBrowsers: {
     name: string;
@@ -63,16 +66,18 @@ export function GetInstalledBrowsers() {
   }[] = [];
 
   for (const browser of Browsers) {
-    if (browser.path[platform]) {
-      for (const path of browser.path[platform]) {
-        if (exists(path)) {
-          installedBrowsers.push({
-            name: browser.name,
-            type: browser.type,
-            path,
-          });
-          break;
-        }
+    if (!browser.path[platform]) {
+      continue;
+    }
+    for (const path of browser.path[platform]) {
+      const ok = await exists(path);
+      if (ok) {
+        installedBrowsers.push({
+          name: browser.name,
+          type: browser.type,
+          path,
+        });
+        break;
       }
     }
   }
