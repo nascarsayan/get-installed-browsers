@@ -35,10 +35,16 @@ const getDarwinPaths = (subdir: string) => {
   return knownPaths;
 };
 
-export interface Browser {
+export interface BrowserPaths {
   name: string;
   type: "chrome" | "firefox" | "safari" | "other";
   path: Record<NodeJS.Platform, string[]>;
+}
+
+export interface BrowserPath {
+  name: string;
+  type: "chrome" | "firefox" | "safari" | "other";
+  path: string;
 }
 
 async function exists(path: string): Promise<boolean> {
@@ -59,11 +65,7 @@ async function exists(path: string): Promise<boolean> {
 
 export async function GetInstalledBrowsers() {
   const platform = process.platform;
-  const installedBrowsers: {
-    name: string;
-    type: string;
-    path: string;
-  }[] = [];
+  const installedBrowsers: BrowserPath[] = [];
 
   for (const browser of Browsers) {
     if (!browser.path[platform]) {
@@ -99,7 +101,7 @@ const emptyPlatform = {
   netbsd: [],
 };
 
-export const Browsers: Browser[] = [
+export const Browsers: BrowserPaths[] = [
   {
     name: "Arc",
     type: "chrome",
