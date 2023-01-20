@@ -1,6 +1,7 @@
 import { homedir } from "os";
 import { resolve } from "path";
 import { existsSync } from "fs";
+import { exec } from "child_process";
 
 interface Browser {
   name: string;
@@ -8,6 +9,20 @@ interface Browser {
   path: Record<NodeJS.Platform, string[]>;
 }
 
+function exists(path: string): boolean {
+  const platform = process.platform;
+
+  if (platform === "linux") {
+    let err: Error | null = null;
+    exec("which " + path, (error) => {
+      err = error;
+    });
+
+    return err === null;
+  }
+
+  return existsSync(path);
+}
 
 export function GetInstalledBrowsers() {
   const platform = process.platform;
@@ -20,7 +35,7 @@ export function GetInstalledBrowsers() {
   for (const browser of Browsers) {
     if (browser.path[platform]) {
       for (const path of browser.path[platform]) {
-        if (existsSync(path)) {
+        if (exists(path)) {
           installedBrowsers.push({
             name: browser.name,
             type: browser.type,

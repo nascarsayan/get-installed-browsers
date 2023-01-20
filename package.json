@@ -2,23 +2,25 @@
   "name": "my-lib",
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && rollup -c",
+    "dev": "ts-node-esm ./src/index.ts"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.0.0",
     "@types/node": "^18.11.18",
-    "typescript": "^4.9.3",
-    "vite": "^4.0.0",
-    "vite-plugin-dts": "^1.7.1"
+    "rollup": "^3.10.0",
+    "rollup-plugin-dts": "^5.1.1",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3"
   }
 }
