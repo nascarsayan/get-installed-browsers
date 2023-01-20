@@ -121,6 +121,7 @@ export const Browsers: BrowserPaths[] = [
     },
   },
   {
+    // Google Chrome
     name: "Chrome",
     type: "chrome",
     path: {
@@ -151,7 +152,8 @@ export const Browsers: BrowserPaths[] = [
     },
   },
   {
-    name: "Microsoft Edge",
+    // Microsoft Edge
+    name: "Edge",
     type: "chrome",
     path: {
       ...emptyPlatform,
@@ -181,6 +183,7 @@ export const Browsers: BrowserPaths[] = [
     },
   },
   {
+    // Mozilla Firefox
     name: "Firefox",
     type: "firefox",
     path: {
