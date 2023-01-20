@@ -207,6 +207,22 @@ export const Browsers: Browser[] = [
     },
   },
   {
+    name: "Safari Technical Preview",
+    type: "safari",
+    path: {
+      ...emptyPlatform,
+      darwin: getDarwinPaths("Safari Technical Preview.app/Contents/MacOS/Safari Technical Preview"),
+    },
+  },
+  {
+    name: "Safari beta",
+    type: "safari",
+    path: {
+      ...emptyPlatform,
+      darwin: getDarwinPaths("Safari beta.app/Contents/MacOS/Safari beta"),
+    },
+  },
+  {
     name: "Orion",
     type: "safari",
     path: {
