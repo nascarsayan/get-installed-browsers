@@ -35,7 +35,7 @@ const getDarwinPaths = (subdir: string) => {
   return knownPaths;
 };
 
-interface Browser {
+export interface Browser {
   name: string;
   type: "chrome" | "firefox" | "safari" | "other";
   path: Record<NodeJS.Platform, string[]>;
