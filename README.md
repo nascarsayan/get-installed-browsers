@@ -1,6 +1,12 @@
 # Get Installed Browsers
 Get a list of installed browsers
 
+## Installation
+
+```js
+npm i get-installed-browsers
+```
+
 ## Usage
 
 ```js
