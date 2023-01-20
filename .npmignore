@@ -1,4 +1,5 @@
-*
-!dist/
-!package.json
-!package-lock.json
+node_modules/**
+src/**
+.gitignore
+rollup.config.js
+tsconfig.json
