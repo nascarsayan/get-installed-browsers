@@ -5,7 +5,7 @@ Get a list of installed browsers
 
 ```js
 import { GetInstalledBrowsers } from "get-installed-browsers";
-console.log(await GetInstalledBrowsers());
+console.dir(await GetInstalledBrowsers());
 ```
 
 ```js
