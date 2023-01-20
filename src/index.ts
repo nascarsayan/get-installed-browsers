@@ -1,9 +1,7 @@
 import { homedir } from "os";
 import { resolve } from "path";
 import { existsSync } from "fs";
-import { promisify } from "util";
-import { exec } from "child_process";
-const execp = promisify(exec);
+import { execSync } from "child_process";
 
 const getWinPaths = (subdir: string) => {
   const sysDrive = process.env["SystemDrive"] || "C:";
@@ -47,13 +45,13 @@ export interface BrowserPath {
   path: string;
 }
 
-async function exists(path: string): Promise<boolean> {
+function exists(path: string): Promise<boolean> {
   const platform = process.platform;
 
   if (platform === "linux") {
     let exists = true;
     try {
-      await execp("which " + path);
+      execSync("which " + path);
     } catch (e) {
       exists = false;
     }
@@ -63,7 +61,7 @@ async function exists(path: string): Promise<boolean> {
   return existsSync(path);
 }
 
-export async function GetInstalledBrowsers() {
+export function GetInstalledBrowsers() {
   const platform = process.platform;
   const installedBrowsers: BrowserPath[] = [];
 
@@ -72,7 +70,7 @@ export async function GetInstalledBrowsers() {
       continue;
     }
     for (const path of browser.path[platform]) {
-      const ok = await exists(path);
+      const ok = exists(path);
       if (ok) {
         installedBrowsers.push({
           name: browser.name,
