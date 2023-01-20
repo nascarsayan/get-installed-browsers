@@ -1,6 +1,6 @@
 {
   "name": "get-installed-browsers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -19,7 +19,6 @@
     "@rollup/plugin-typescript": "^11.0.0",
     "@types/node": "^18.11.18",
     "rollup": "^3.10.0",
-    "rollup-plugin-dts": "^5.1.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^4.9.3"
