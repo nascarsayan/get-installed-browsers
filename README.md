@@ -46,6 +46,7 @@ Supported browsers:
 - Chrome
 - Chrome Beta
 - Chrome Canary
+- Chromium
 - Ephiphany (Gnome Web)
 - Firefox
 - Firefox Nightly
