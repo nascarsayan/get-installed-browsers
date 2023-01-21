@@ -11,7 +11,7 @@ npm i get-installed-browsers
 
 ```js
 import { GetInstalledBrowsers } from "get-installed-browsers";
-console.dir(await GetInstalledBrowsers());
+console.dir(GetInstalledBrowsers());
 ```
 
 ```js

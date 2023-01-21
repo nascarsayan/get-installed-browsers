@@ -45,7 +45,7 @@ export interface BrowserPath {
   path: string;
 }
 
-function exists(path: string): Promise<boolean> {
+function exists(path: string): boolean {
   const platform = process.platform;
 
   if (platform === "linux") {
