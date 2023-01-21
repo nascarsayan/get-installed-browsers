@@ -150,7 +150,16 @@ export const Browsers: BrowserPaths[] = [
     },
   },
   {
-    // Microsoft Edge
+    name: "Chromium",
+    type: "chrome",
+    path: {
+      ...emptyPlatform,
+      win32: getWinPaths("Chromium\\Application\\chrome.exe"),
+      darwin: getDarwinPaths("Chromium.app/Contents/MacOS/Chromium"),
+      linux: ["chromium"],
+    },
+  },
+  {
     name: "Edge",
     type: "chrome",
     path: {
